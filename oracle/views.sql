@@ -43,4 +43,21 @@ CREATE OR REPLACE VIEW WycieczkiDostepne
 AS
     SELECT *
     FROM WycieczkiMiejsca
-        WHERE (LICZBA_WOLNYCH_MIEJSC > 0) AND (DATA > CURRENT_DATE)
+        WHERE (LICZBA_WOLNYCH_MIEJSC > 0) AND (DATA > CURRENT_DATE);
+
+CREATE OR REPLACE VIEW WycieczkiMiejsca_v2
+AS
+    SELECT
+        w.ID_WYCIECZKI,
+        w.KRAJ,
+        w.DATA,
+        w.NAZWA,
+        w.LICZBA_MIEJSC,
+        w.LICZBA_WOLNYCH_MIEJSC
+    FROM WYCIECZKI w;
+
+CREATE OR REPLACE VIEW WycieczkiDostepne_v2
+AS
+    SELECT *
+    FROM WycieczkiMiejsca_v2
+        WHERE (LICZBA_WOLNYCH_MIEJSC > 0) AND (DATA > CURRENT_DATE);

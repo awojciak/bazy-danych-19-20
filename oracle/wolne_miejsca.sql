@@ -10,4 +10,6 @@ AS
                 FROM REZERWACJE R
                     WHERE (R.STATUS <> 'A') AND (W.ID_WYCIECZKI = R.ID_WYCIECZKI)
             );
+
+        COMMIT;
     END;
