@@ -395,6 +395,12 @@ AS
                     WHERE ID_WYCIECZKI = id_danej_wycieczki;
         END IF;
 
+        IF aktualny_status = 'A' THEN
+            UPDATE WYCIECZKI
+                SET LICZBA_WOLNYCH_MIEJSC = LICZBA_WOLNYCH_MIEJSC - 1
+                    WHERE ID_WYCIECZKI = id_danej_wycieczki;
+        END IF;
+
         COMMIT;
     END;
 
@@ -544,6 +550,12 @@ AS
         IF nowy_status = 'A' THEN
             UPDATE WYCIECZKI
                 SET LICZBA_WOLNYCH_MIEJSC = LICZBA_WOLNYCH_MIEJSC + 1
+                    WHERE ID_WYCIECZKI = id_danej_wycieczki;
+        END IF;
+
+        IF aktualny_status = 'A' THEN
+            UPDATE WYCIECZKI
+                SET LICZBA_WOLNYCH_MIEJSC = LICZBA_WOLNYCH_MIEJSC - 1
                     WHERE ID_WYCIECZKI = id_danej_wycieczki;
         END IF;
 
